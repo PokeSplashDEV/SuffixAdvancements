@@ -9,12 +9,9 @@
     "repo": "https://github.com/Ben/untitled"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/suffixadvancements/icon.png",
+  "icon": "",
   "environment": "server",
   "entrypoints": {
-    "client": [
-      "org.pokesplash.suffixadvancements.client.SuffixAdvancementsClient"
-    ],
     "main": [
       "org.pokesplash.suffixadvancements.SuffixAdvancements"
     ]
