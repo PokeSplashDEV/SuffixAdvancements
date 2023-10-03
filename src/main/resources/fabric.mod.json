@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "suffixadvancements",
+  "version": "${version}",
+  "name": "SuffixAdvancements",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/Ben/untitled"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/suffixadvancements/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "client": [
+      "org.pokesplash.suffixadvancements.client.SuffixAdvancementsClient"
+    ],
+    "main": [
+      "org.pokesplash.suffixadvancements.SuffixAdvancements"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
