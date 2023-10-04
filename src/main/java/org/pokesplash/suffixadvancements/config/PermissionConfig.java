@@ -1,6 +1,6 @@
 package org.pokesplash.suffixadvancements.config;
 
-public class PermissionConfig {
+public class PermissionConfig implements AdvancementConfig {
 	private String suffix;
 	private String permission;
 
@@ -9,6 +9,7 @@ public class PermissionConfig {
 		permission = "advancements.defaultsuffix";
 	}
 
+	@Override
 	public String getSuffix() {
 		return suffix;
 	}

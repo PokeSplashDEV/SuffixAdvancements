@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.util.Utils;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 
 public class Config {
@@ -51,6 +53,32 @@ public class Config {
 		champion = new PermissionConfig();
 		stakeholder = new PermissionConfig();
 		primordial = new PermissionConfig();
+	}
+
+	public ArrayList<AdvancementConfig> getConfigs() {
+		ArrayList<AdvancementConfig> list = new ArrayList<>();
+		list.add(dealer);
+		list.add(highroller);
+		list.add(fortune);
+		list.add(writeoff);
+		list.add(camper);
+		list.add(bountyhunter);
+		list.add(unrivaled);
+		list.add(bot);
+		list.add(botanist);
+		list.add(babyfactory);
+		list.add(ally);
+		list.add(toxic);
+		list.add(smurf);
+		list.add(lucky);
+		list.add(habitue);
+		list.add(onemore);
+		list.add(liberator);
+		list.add(champion);
+		list.add(stakeholder);
+		list.add(primordial);
+
+		return list;
 	}
 
 	public CountConfig getDealer() {

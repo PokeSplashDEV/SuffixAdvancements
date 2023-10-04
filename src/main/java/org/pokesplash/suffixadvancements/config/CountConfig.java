@@ -1,6 +1,6 @@
 package org.pokesplash.suffixadvancements.config;
 
-public class CountConfig {
+public class CountConfig implements AdvancementConfig {
 	private String suffix;
 	private int value;
 
@@ -9,6 +9,7 @@ public class CountConfig {
 		value = 10;
 	}
 
+	@Override
 	public String getSuffix() {
 		return suffix;
 	}

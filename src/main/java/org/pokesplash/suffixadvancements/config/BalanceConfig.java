@@ -1,6 +1,6 @@
 package org.pokesplash.suffixadvancements.config;
 
-public class BalanceConfig {
+public class BalanceConfig implements AdvancementConfig {
 	private String suffix;
 	private double value;
 
@@ -9,6 +9,7 @@ public class BalanceConfig {
 		value = 10;
 	}
 
+	@Override
 	public String getSuffix() {
 		return suffix;
 	}
