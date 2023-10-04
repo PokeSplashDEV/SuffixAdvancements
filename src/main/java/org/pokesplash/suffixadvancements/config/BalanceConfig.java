@@ -1,10 +1,10 @@
 package org.pokesplash.suffixadvancements.config;
 
-public class CountConfig {
+public class BalanceConfig {
 	private String suffix;
-	private int value;
+	private double value;
 
-	public CountConfig() {
+	public BalanceConfig() {
 		suffix = "[CountSuffix]";
 		value = 10;
 	}
@@ -13,7 +13,7 @@ public class CountConfig {
 		return suffix;
 	}
 
-	public int getValue() {
+	public double getValue() {
 		return value;
 	}
 }

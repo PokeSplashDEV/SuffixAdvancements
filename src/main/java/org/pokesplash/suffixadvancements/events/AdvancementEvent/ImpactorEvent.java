@@ -1,4 +1,4 @@
-package org.pokesplash.suffixadvancements.events;
+package org.pokesplash.suffixadvancements.events.AdvancementEvent;
 
 import net.impactdev.impactor.api.economy.events.EconomyTransactionEvent;
 import net.impactdev.impactor.api.events.ImpactorEventBus;

@@ -8,8 +8,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class Config {
 	private CountConfig dealer;
-	private CountConfig highroller;
-	private CountConfig fortune;
+	private BalanceConfig highroller;
+	private BalanceConfig fortune;
 	private PermissionConfig writeoff;
 	private PermissionConfig camper;
 	private CountConfig bountyhunter;
@@ -31,8 +31,8 @@ public class Config {
 
 	public Config() {
 		dealer = new CountConfig();
-		highroller = new CountConfig();
-		fortune = new CountConfig();
+		highroller = new BalanceConfig();
+		fortune = new BalanceConfig();
 		writeoff = new PermissionConfig();
 		camper = new PermissionConfig();
 		bountyhunter = new CountConfig();
@@ -57,11 +57,11 @@ public class Config {
 		return dealer;
 	}
 
-	public CountConfig getHighroller() {
+	public BalanceConfig getHighroller() {
 		return highroller;
 	}
 
-	public CountConfig getFortune() {
+	public BalanceConfig getFortune() {
 		return fortune;
 	}
 

@@ -1,4 +1,4 @@
-package org.pokesplash.suffixadvancements.events;
+package org.pokesplash.suffixadvancements.events.AdvancementEvent;
 
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.event.node.NodeAddEvent;
