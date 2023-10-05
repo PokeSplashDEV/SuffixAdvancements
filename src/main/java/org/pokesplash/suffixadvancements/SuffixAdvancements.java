@@ -1,11 +1,13 @@
 package org.pokesplash.suffixadvancements;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pokesplash.suffixadvancements.account.AccountProvider;
+import org.pokesplash.suffixadvancements.command.CommandHandler;
 import org.pokesplash.suffixadvancements.config.Config;
 import org.pokesplash.suffixadvancements.config.NodeProvider;
 import org.pokesplash.suffixadvancements.events.AdvancementEvent.DealerEvent;
@@ -28,20 +30,25 @@ public class SuffixAdvancements implements ModInitializer {
 	 */
 	@Override
 	public void onInitialize() {
+		CommandRegistrationCallback.EVENT.register(CommandHandler::registerCommands);
+		ServerPlayConnectionEvents.JOIN.register(new JoinEvent()); // Creates an account.
+
 		ServerLifecycleEvents.SERVER_STARTED.register(e -> {
-			config.init();
-			accounts.init();
-			nodes.init();
+			load();
 
 			/*
 			 * Register the events.
 			 */
 
-			ServerPlayConnectionEvents.JOIN.register(new JoinEvent()); // Creates an account.
 			new HighRollerAndFortuneEvent().registerEvent();
 			new DealerEvent().registerEvent();
 			new LuckPermsEvent().registerEvent();
 		});
+	}
 
+	public static void load() {
+		config.init();
+		accounts.init();
+		nodes.init();
 	}
 }
