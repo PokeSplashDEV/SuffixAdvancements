@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class Account {
 	private UUID owner;
+	private String username;
 	private AccountStatCount dealer;
 	private AccountStatBalance highroller;
 	private AccountStatBalance fortune;
@@ -137,5 +138,13 @@ public class Account {
 
 	public AccountStatPermission getPrimordial() {
 		return primordial;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

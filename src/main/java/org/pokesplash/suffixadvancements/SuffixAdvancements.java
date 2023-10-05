@@ -1,6 +1,5 @@
 package org.pokesplash.suffixadvancements;
 
-import ca.landonjw.gooeylibs2.api.button.linked.LinkedPageButton;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
@@ -9,7 +8,9 @@ import org.apache.logging.log4j.Logger;
 import org.pokesplash.suffixadvancements.account.AccountProvider;
 import org.pokesplash.suffixadvancements.config.Config;
 import org.pokesplash.suffixadvancements.config.NodeProvider;
+import org.pokesplash.suffixadvancements.events.AdvancementEvent.DealerEvent;
 import org.pokesplash.suffixadvancements.events.AdvancementEvent.HighRollerAndFortuneEvent;
+import org.pokesplash.suffixadvancements.events.AdvancementEvent.LuckPermsEvent;
 import org.pokesplash.suffixadvancements.events.JoinEvent;
 import org.pokesplash.suffixadvancements.util.LP;
 
@@ -38,9 +39,8 @@ public class SuffixAdvancements implements ModInitializer {
 
 			ServerPlayConnectionEvents.JOIN.register(new JoinEvent()); // Creates an account.
 			new HighRollerAndFortuneEvent().registerEvent();
-
-			LP.changeSuffix(nodes.getNode(config.getHighroller()),
-					UUID.fromString("b5c833a0-c6f7-4e89-9ad5-d36faef37ab2")); // TODO remove
+			new DealerEvent().registerEvent();
+			new LuckPermsEvent().registerEvent();
 		});
 
 	}

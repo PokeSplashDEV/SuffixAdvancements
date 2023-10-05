@@ -5,6 +5,7 @@ import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.util.Utils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -21,6 +22,17 @@ public class AccountProvider {
 			return createAccount(playerUuid);
 		}
 		return accounts.get(playerUuid);
+	}
+
+	public Account getAccount(String username) {
+		ArrayList<Account> accountList = new ArrayList<>(accounts.values());
+
+		for (Account ac : accountList) {
+			if (ac.getUsername().equalsIgnoreCase(username)) {
+				return ac;
+			}
+		}
+		return null;
 	}
 
 	public Account createAccount(UUID playerUuid) {
