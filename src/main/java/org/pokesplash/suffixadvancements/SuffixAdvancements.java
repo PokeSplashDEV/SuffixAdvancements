@@ -10,13 +10,8 @@ import org.pokesplash.suffixadvancements.account.AccountProvider;
 import org.pokesplash.suffixadvancements.command.CommandHandler;
 import org.pokesplash.suffixadvancements.config.Config;
 import org.pokesplash.suffixadvancements.config.NodeProvider;
-import org.pokesplash.suffixadvancements.events.AdvancementEvent.DealerEvent;
-import org.pokesplash.suffixadvancements.events.AdvancementEvent.HighRollerAndFortuneEvent;
-import org.pokesplash.suffixadvancements.events.AdvancementEvent.LuckPermsEvent;
+import org.pokesplash.suffixadvancements.events.AdvancementEvent.*;
 import org.pokesplash.suffixadvancements.events.JoinEvent;
-import org.pokesplash.suffixadvancements.util.LP;
-
-import java.util.UUID;
 
 public class SuffixAdvancements implements ModInitializer {
 
@@ -43,6 +38,10 @@ public class SuffixAdvancements implements ModInitializer {
 			new HighRollerAndFortuneEvent().registerEvent();
 			new DealerEvent().registerEvent();
 			new LuckPermsEvent().registerEvent();
+			new UnrivaledAndBotEvent().registerEvent();
+			new BotanistEvent().registerEvent(); // TODO mapping issue
+			new LuckyEvent().registerEvent(); // TODO mapping issue
+			new LiberatorEvent().registerEvent(); // TODO mapping issue
 		});
 	}
 

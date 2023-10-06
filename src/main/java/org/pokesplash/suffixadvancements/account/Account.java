@@ -128,6 +128,10 @@ public class Account {
 		return perfectionist;
 	}
 
+	public void setPerfectionist(boolean perfectionist) {
+		this.perfectionist = perfectionist;
+	}
+
 	public AccountStatPermission getChampion() {
 		return champion;
 	}

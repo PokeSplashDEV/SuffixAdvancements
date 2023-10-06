@@ -5,6 +5,7 @@ import net.luckperms.api.event.node.NodeAddEvent;
 import net.luckperms.api.node.types.SuffixNode;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
+import org.pokesplash.suffixadvancements.util.Perfectionist;
 
 public class LuckPermsEvent {
 	public void registerEvent() {
@@ -17,6 +18,9 @@ public class LuckPermsEvent {
 					System.out.println(e.getTarget().getFriendlyName());
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getWriteoff().setComplete(true);
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 
@@ -26,6 +30,9 @@ public class LuckPermsEvent {
 					System.out.println(e.getTarget().getFriendlyName());
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getCamper().setComplete(true);
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 
@@ -34,6 +41,9 @@ public class LuckPermsEvent {
 				if (smurfNode.equalsIgnoreCase(e.getNode().getKey())) {
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getSmurf().setComplete(true);
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 
@@ -42,6 +52,9 @@ public class LuckPermsEvent {
 				if (champNode.equalsIgnoreCase(e.getNode().getKey())) {
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getChampion().setComplete(true);
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 
@@ -50,6 +63,9 @@ public class LuckPermsEvent {
 				if (stakeholderNode.equalsIgnoreCase(e.getNode().getKey())) {
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getStakeholder().setComplete(true);
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 
@@ -58,6 +74,9 @@ public class LuckPermsEvent {
 				if (primordialNode.equalsIgnoreCase(e.getNode().getKey())) {
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getPrimordial().setComplete(true);
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 			}

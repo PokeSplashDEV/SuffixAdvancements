@@ -5,6 +5,7 @@ import net.impactdev.impactor.api.economy.transactions.details.EconomyTransactio
 import net.impactdev.impactor.api.events.ImpactorEventBus;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
+import org.pokesplash.suffixadvancements.util.Perfectionist;
 
 public class HighRollerAndFortuneEvent {
 	public void registerEvent() {
@@ -20,10 +21,18 @@ public class HighRollerAndFortuneEvent {
 
 				if (account.getHighroller().getCount() >= SuffixAdvancements.config.getHighroller().getValue()) {
 					account.getHighroller().setComplete(true);
+
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 				}
 
 				if (account.getFortune().getCount() >= SuffixAdvancements.config.getFortune().getValue()) {
 					account.getFortune().setComplete(true);
+
+					if (Perfectionist.check(account)) {
+						account.setPerfectionist(true);
+					}
 				}
 
 				SuffixAdvancements.accounts.updateAccount(account);

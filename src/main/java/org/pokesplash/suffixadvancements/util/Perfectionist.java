@@ -1,0 +1,37 @@
+package org.pokesplash.suffixadvancements.util;
+
+import org.pokesplash.suffixadvancements.account.Account;
+
+public abstract class Perfectionist {
+	public static boolean check(Account account) {
+
+		if (account.isPerfectionist()) {
+			return false;
+		}
+
+		boolean dealer = account.getDealer().isComplete();
+		boolean highroller = account.getHighroller().isComplete();
+		boolean fortune = account.getFortune().isComplete();
+		boolean writeoff = account.getWriteoff().isComplete();
+		boolean camper = account.getCamper().isComplete();
+		boolean bountyhunter = account.getBountyhunter().isComplete();
+		boolean unrivaled = account.getUnrivaled().isComplete();
+		boolean bot = account.getBot().isComplete();
+		boolean botanist = account.getBotanist().isComplete();
+		boolean babyfactory = account.getBabyfactory().isComplete();
+		boolean ally = account.getAlly().isComplete();
+		boolean toxic = account.getToxic().isComplete();
+		boolean smurf = account.getSmurf().isComplete();
+		boolean lucky = account.getLucky().isComplete();
+		boolean habitue = account.getHabitue().isComplete();
+		boolean onemore = account.getOnemore().isComplete();
+		boolean liberator = account.getLiberator().isComplete();
+
+		if (dealer && highroller && fortune && writeoff && camper && bountyhunter &&
+		unrivaled && bot && botanist && babyfactory && ally && toxic && smurf && lucky &&
+		habitue && onemore && liberator) {
+			return true;
+		}
+		return false;
+	}
+}
