@@ -39,9 +39,9 @@ public class SuffixAdvancements implements ModInitializer {
 			new DealerEvent().registerEvent();
 			new LuckPermsEvent().registerEvent();
 			new UnrivaledAndBotEvent().registerEvent();
-			new BotanistEvent().registerEvent(); // TODO mapping issue
-			new LuckyEvent().registerEvent(); // TODO mapping issue
-			new LiberatorEvent().registerEvent(); // TODO mapping issue
+			new BotanistEvent().registerEvent();
+			new LuckyEvent().registerEvent();
+			new LiberatorEvent().registerEvent();
 		});
 	}
 

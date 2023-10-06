@@ -1,7 +1,10 @@
 package org.pokesplash.suffixadvancements.util;
 
 import net.luckperms.api.LuckPermsProvider;
+import net.luckperms.api.context.ContextCalculator;
+import net.luckperms.api.context.StaticContextCalculator;
 import net.luckperms.api.node.Node;
+import net.luckperms.api.node.metadata.NodeMetadataKey;
 import net.luckperms.api.node.types.SuffixNode;
 
 import java.util.ArrayList;
@@ -14,8 +17,11 @@ public abstract class LP {
 			ArrayList<Node> nodes = new ArrayList<>(e.data().toCollection());
 
 			for (Node node : nodes) {
-				if (node.getContexts().contains("mod", "suffixadvancements")) {
-					e.data().remove(node);
+
+				if (node instanceof SuffixNode) {
+					if (((SuffixNode) node).getPriority() == 41) {
+						e.data().remove(node);
+					}
 				}
 			}
 

@@ -9,22 +9,23 @@ import org.pokesplash.suffixadvancements.util.Perfectionist;
 
 public class LuckyEvent {
 	public void registerEvent() {
-		CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.NORMAL, el -> {
-			if (el.getPokemon().getShiny()) {
-				Account acc = SuffixAdvancements.accounts.getAccount(el.getPlayer().getUuid());
-				acc.getLucky().addCount();
-
-				if (acc.getLucky().getCount() >= SuffixAdvancements.config.getLucky().getValue()) {
-					acc.getLucky().setComplete(true);
-
-					if (Perfectionist.check(acc)) {
-						acc.setPerfectionist(true);
-					}
-				}
-
-				SuffixAdvancements.accounts.updateAccount(acc);
-			}
-			return Unit.INSTANCE;
-		});
+		// TODO pray mappings get fixed
+//		CobblemonEvents.POKEMON_CAPTURED.subscribe(Priority.NORMAL, el -> {
+//			if (el.getPokemon().getShiny()) {
+//				Account acc = SuffixAdvancements.accounts.getAccount(el.getPlayer().getUuid());
+//				acc.getLucky().addCount();
+//
+//				if (acc.getLucky().getCount() >= SuffixAdvancements.config.getLucky().getValue()) {
+//					acc.getLucky().setComplete(true);
+//
+//					if (Perfectionist.check(acc)) {
+//						acc.setPerfectionist(true);
+//					}
+//				}
+//
+//				SuffixAdvancements.accounts.updateAccount(acc);
+//			}
+//			return Unit.INSTANCE;
+//		});
 	}
 }
