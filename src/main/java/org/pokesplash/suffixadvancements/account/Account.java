@@ -19,7 +19,7 @@ public class Account {
 	private AccountStatCount toxic;
 	private AccountStatPermission smurf;
 	private AccountStatCount lucky;
-	private AccountStatCount habitue;
+	private AccountStatCount quizmaster;
 	private AccountStatCount onemore;
 	private AccountStatCount liberator;
 	private boolean perfectionist;
@@ -43,7 +43,7 @@ public class Account {
 		toxic = new AccountStatCount();
 		smurf = new AccountStatPermission();
 		lucky = new AccountStatCount();
-		habitue = new AccountStatCount();
+		quizmaster = new AccountStatCount();
 		onemore = new AccountStatCount();
 		liberator = new AccountStatCount();
 		perfectionist = false;
@@ -112,8 +112,8 @@ public class Account {
 		return lucky;
 	}
 
-	public AccountStatCount getHabitue() {
-		return habitue;
+	public AccountStatCount getQuizmaster() {
+		return quizmaster;
 	}
 
 	public AccountStatCount getOnemore() {

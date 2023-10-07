@@ -24,13 +24,13 @@ public abstract class Perfectionist {
 		boolean toxic = account.getToxic().isComplete();
 		boolean smurf = account.getSmurf().isComplete();
 		boolean lucky = account.getLucky().isComplete();
-		boolean habitue = account.getHabitue().isComplete();
+		boolean quizmaster = account.getQuizmaster().isComplete();
 		boolean onemore = account.getOnemore().isComplete();
 		boolean liberator = account.getLiberator().isComplete();
 
 		if (dealer && highroller && fortune && writeoff && camper && bountyhunter &&
 		unrivaled && bot && botanist && babyfactory && ally && toxic && smurf && lucky &&
-		habitue && onemore && liberator) {
+				quizmaster && onemore && liberator) {
 			return true;
 		}
 		return false;

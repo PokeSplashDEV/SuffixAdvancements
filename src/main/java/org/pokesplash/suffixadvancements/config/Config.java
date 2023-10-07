@@ -23,7 +23,7 @@ public class Config {
 	private CountConfig toxic;
 	private PermissionConfig smurf;
 	private CountConfig lucky;
-	private CountConfig habitue;
+	private CountConfig quizmaster;
 	private CountConfig onemore;
 	private CountConfig liberator;
 	private String perfectionist;
@@ -46,7 +46,7 @@ public class Config {
 		toxic = new CountConfig();
 		smurf = new PermissionConfig();
 		lucky = new CountConfig();
-		habitue = new CountConfig();
+		quizmaster = new CountConfig();
 		onemore = new CountConfig();
 		liberator = new CountConfig();
 		perfectionist = "[Perfectionist]";
@@ -71,7 +71,7 @@ public class Config {
 		list.add(toxic);
 		list.add(smurf);
 		list.add(lucky);
-		list.add(habitue);
+		list.add(quizmaster);
 		list.add(onemore);
 		list.add(liberator);
 		list.add(champion);
@@ -137,8 +137,8 @@ public class Config {
 		return lucky;
 	}
 
-	public CountConfig getHabitue() {
-		return habitue;
+	public CountConfig getQuizmaster() {
+		return quizmaster;
 	}
 
 	public CountConfig getOnemore() {
@@ -184,7 +184,7 @@ public class Config {
 					toxic = cfg.getToxic();
 					smurf = cfg.getSmurf();
 					lucky = cfg.getLucky();
-					habitue = cfg.getHabitue();
+					quizmaster = cfg.getQuizmaster();
 					onemore = cfg.getOnemore();
 					liberator = cfg.getLiberator();
 					perfectionist = cfg.getPerfectionist();
