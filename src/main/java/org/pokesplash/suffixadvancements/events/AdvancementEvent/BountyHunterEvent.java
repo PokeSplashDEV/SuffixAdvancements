@@ -13,10 +13,7 @@ public class BountyHunterEvent {
 
 			if (account.getBountyhunter().getCount() >= SuffixAdvancements.config.getBountyhunter().getValue()) {
 				account.getBountyhunter().setComplete(true);
-
-				if (Perfectionist.check(account)) {
-					account.setPerfectionist(true);
-				}
+				Perfectionist.updatePerfectionist(account);
 			}
 			SuffixAdvancements.accounts.updateAccount(account);
 		});

@@ -22,17 +22,13 @@ public class HighRollerAndFortuneEvent {
 				if (account.getHighroller().getCount() >= SuffixAdvancements.config.getHighroller().getValue()) {
 					account.getHighroller().setComplete(true);
 
-					if (Perfectionist.check(account)) {
-						account.setPerfectionist(true);
-					}
+					Perfectionist.updatePerfectionist(account);
 				}
 
 				if (account.getFortune().getCount() >= SuffixAdvancements.config.getFortune().getValue()) {
 					account.getFortune().setComplete(true);
 
-					if (Perfectionist.check(account)) {
-						account.setPerfectionist(true);
-					}
+					Perfectionist.updatePerfectionist(account);
 				}
 
 				SuffixAdvancements.accounts.updateAccount(account);

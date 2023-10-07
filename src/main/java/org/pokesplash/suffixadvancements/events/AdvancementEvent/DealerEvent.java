@@ -14,9 +14,7 @@ public class DealerEvent {
 			if (account.getDealer().getCount() >= SuffixAdvancements.config.getDealer().getValue()) {
 				account.getDealer().setComplete(true);
 
-				if (Perfectionist.check(account)) {
-					account.setPerfectionist(true);
-				}
+				Perfectionist.updatePerfectionist(account);
 			}
 
 			SuffixAdvancements.accounts.updateAccount(account);

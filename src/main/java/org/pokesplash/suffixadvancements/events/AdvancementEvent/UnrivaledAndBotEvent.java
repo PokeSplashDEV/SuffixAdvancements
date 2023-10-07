@@ -19,9 +19,7 @@ public class UnrivaledAndBotEvent {
 				if (acc.getUnrivaled().getCount() >= SuffixAdvancements.config.getUnrivaled().getValue()) {
 					acc.getUnrivaled().setComplete(true);
 
-					if (Perfectionist.check(acc)) {
-						acc.setPerfectionist(true);
-					}
+					Perfectionist.updatePerfectionist(acc);
 				}
 
 				SuffixAdvancements.accounts.updateAccount(acc);
@@ -35,9 +33,7 @@ public class UnrivaledAndBotEvent {
 				if (acc.getBot().getCount() >= SuffixAdvancements.config.getBot().getValue()) {
 					acc.getBot().setComplete(true);
 
-					if (Perfectionist.check(acc)) {
-						acc.setPerfectionist(true);
-					}
+					Perfectionist.updatePerfectionist(acc);
 				}
 
 				SuffixAdvancements.accounts.updateAccount(acc);

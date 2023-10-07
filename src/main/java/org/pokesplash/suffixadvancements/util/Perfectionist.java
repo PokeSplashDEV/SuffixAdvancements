@@ -1,9 +1,10 @@
 package org.pokesplash.suffixadvancements.util;
 
+import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
 
 public abstract class Perfectionist {
-	public static boolean check(Account account) {
+	private static boolean check(Account account) {
 
 		if (account.isPerfectionist()) {
 			return false;
@@ -33,5 +34,12 @@ public abstract class Perfectionist {
 			return true;
 		}
 		return false;
+	}
+
+	public static void updatePerfectionist(Account account) {
+		if (check(account)) {
+			account.setPerfectionist(true);
+			SuffixAdvancements.accounts.updateAccount(account);
+		}
 	}
 }

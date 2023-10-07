@@ -18,9 +18,7 @@ public class LuckPermsEvent {
 					System.out.println(e.getTarget().getFriendlyName());
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getWriteoff().setComplete(true);
-					if (Perfectionist.check(account)) {
-						account.setPerfectionist(true);
-					}
+					Perfectionist.updatePerfectionist(account);
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 
@@ -30,9 +28,7 @@ public class LuckPermsEvent {
 					System.out.println(e.getTarget().getFriendlyName());
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getCamper().setComplete(true);
-					if (Perfectionist.check(account)) {
-						account.setPerfectionist(true);
-					}
+					Perfectionist.updatePerfectionist(account);
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 
@@ -41,9 +37,7 @@ public class LuckPermsEvent {
 				if (smurfNode.equalsIgnoreCase(e.getNode().getKey())) {
 					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
 					account.getSmurf().setComplete(true);
-					if (Perfectionist.check(account)) {
-						account.setPerfectionist(true);
-					}
+					Perfectionist.updatePerfectionist(account);
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
 

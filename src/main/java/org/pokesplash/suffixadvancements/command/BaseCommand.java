@@ -27,6 +27,7 @@ public class BaseCommand {
 		dispatcher.register(CommandManager.literal("suffixadv").redirect(registeredCommand).executes(this::run));
 
 		registeredCommand.addChild(new ReloadCommand().build());
+		registeredCommand.addChild(new AddCommand().build());
 
 	}
 

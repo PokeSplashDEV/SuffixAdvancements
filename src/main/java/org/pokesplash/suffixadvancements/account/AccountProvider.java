@@ -1,6 +1,7 @@
 package org.pokesplash.suffixadvancements.account;
 
 import com.google.gson.Gson;
+import net.minecraft.block.PumpkinBlock;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.util.Utils;
 
@@ -17,6 +18,10 @@ public class AccountProvider {
 		accounts = new HashMap<>();
 	}
 
+
+	public boolean hasAccount(UUID player) {
+		return accounts.containsKey(player);
+	}
 	public Account getAccount(UUID playerUuid) {
 		if (!accounts.containsKey(playerUuid)) {
 			return createAccount(playerUuid);
