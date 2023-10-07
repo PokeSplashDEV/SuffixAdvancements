@@ -42,6 +42,7 @@ public class SuffixAdvancements implements ModInitializer {
 			new BotanistEvent().registerEvent();
 			new LuckyEvent().registerEvent();
 			new LiberatorEvent().registerEvent();
+			new BountyHunterEvent().registerEvent();
 		});
 	}
 
