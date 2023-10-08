@@ -9,21 +9,19 @@ import org.pokesplash.suffixadvancements.util.Perfectionist;
 
 public class BotanistEvent {
 	public void registerEvent() {
-		// TODO pray mappings get fixed
-//		CobblemonEvents.BERRY_HARVESTED.subscribe(Priority.NORMAL, el -> {
-//			Account acc = SuffixAdvancements.accounts.getAccount(el.getPlayer().getUuid());
-//			acc.getBotanist().addCount();
-//
-//			if (acc.getBotanist().getCount() >= SuffixAdvancements.config.getBotanist().getValue()) {
-//				acc.getBotanist().setComplete(true);
-//
-//				if (Perfectionist.check(acc)) {
-//					acc.setPerfectionist(true);
-//				}
-//			}
-//
-//			SuffixAdvancements.accounts.updateAccount(acc);
-//			return Unit.INSTANCE;
-//		});
+		CobblemonEvents.BERRY_HARVEST.subscribe(Priority.NORMAL, el -> {
+			Account acc = SuffixAdvancements.accounts.getAccount(el.getPlayer().getUuid());
+
+			acc.getBotanist().addCount();
+
+			if (acc.getBotanist().getCount() >= SuffixAdvancements.config.getBotanist().getValue()) {
+				acc.getBotanist().setComplete(true);
+
+				Perfectionist.updatePerfectionist(acc);
+			}
+
+			SuffixAdvancements.accounts.updateAccount(acc);
+			return Unit.INSTANCE;
+		});
 	}
 }

@@ -9,21 +9,18 @@ import org.pokesplash.suffixadvancements.util.Perfectionist;
 
 public class LiberatorEvent {
 	public void registerEvent() {
-		// TODO pray mappings get fixed
-//		CobblemonEvents.POKEMON_RELEASED_EVENT_POST.subscribe(Priority.NORMAL, el -> {
-//			Account acc = SuffixAdvancements.accounts.getAccount(el.getPlayer().getUuid());
-//			acc.getLiberator().addCount();
-//
-//			if (acc.getLiberator().getCount() >= SuffixAdvancements.config.getLiberator().getValue()) {
-//				acc.getLiberator().setComplete(true);
-//
-//				if (Perfectionist.check(acc)) {
-//					acc.setPerfectionist(true);
-//				}
-//			}
-//
-//			SuffixAdvancements.accounts.updateAccount(acc);
-//			return Unit.INSTANCE;
-//		});
+		CobblemonEvents.POKEMON_RELEASED_EVENT_POST.subscribe(Priority.NORMAL, el -> {
+			Account acc = SuffixAdvancements.accounts.getAccount(el.getPlayer().getUuid());
+			acc.getLiberator().addCount();
+
+			if (acc.getLiberator().getCount() >= SuffixAdvancements.config.getLiberator().getValue()) {
+				acc.getLiberator().setComplete(true);
+
+				Perfectionist.updatePerfectionist(acc);
+			}
+
+			SuffixAdvancements.accounts.updateAccount(acc);
+			return Unit.INSTANCE;
+		});
 	}
 }
