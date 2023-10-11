@@ -47,9 +47,7 @@ public class SuffixAdvancements implements ModInitializer {
 			new LiberatorEvent().registerEvent();
 			new BountyHunterEvent().registerEvent();
 			new QuizMasterEvent().registerEvent();
-
-			LP.changeSuffix(nodes.getNode(config.getPrimordial()),
-					UUID.fromString("b5c833a0-c6f7-4e89-9ad5-d36faef37ab2"));
+			new ToxicEvent().registerEvent();
 		});
 	}
 
