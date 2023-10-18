@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
-import net.minecraft.stat.Stat;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
 

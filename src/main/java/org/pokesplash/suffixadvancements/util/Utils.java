@@ -2,6 +2,8 @@ package org.pokesplash.suffixadvancements.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 
 import java.io.File;
@@ -191,5 +193,17 @@ public class Utils {
 		} else {
 			return message.replaceAll("§[0-9a-fk-or]", "").trim();
 		}
+	}
+
+	/**
+	 * Parses item ID string to an item stack
+	 * @param id The id to parse to
+	 * @return ItemStack
+	 */
+	public static ItemStack parseItemId(String id) {
+		NbtCompound tag = new NbtCompound();
+		tag.putString("id", id);
+		tag.putInt("Count", 1);
+		return ItemStack.fromNbt(tag);
 	}
 }

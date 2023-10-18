@@ -1,11 +1,6 @@
 package org.pokesplash.suffixadvancements.config;
 
-import net.luckperms.api.context.ContextCalculator;
-import net.luckperms.api.context.ImmutableContextSet;
-import net.luckperms.api.node.metadata.NodeMetadataKey;
-import net.luckperms.api.node.types.MetaNode;
 import net.luckperms.api.node.types.PrefixNode;
-import net.luckperms.api.node.types.SuffixNode;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 
 import java.util.ArrayList;
@@ -41,6 +36,5 @@ public class NodeProvider {
 
 		perfection = PrefixNode.builder(SuffixAdvancements.config.getPerfectionist(),
 				41).build();
-
 	}
 }

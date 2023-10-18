@@ -12,9 +12,6 @@ import org.pokesplash.suffixadvancements.config.Config;
 import org.pokesplash.suffixadvancements.config.NodeProvider;
 import org.pokesplash.suffixadvancements.events.AdvancementEvent.*;
 import org.pokesplash.suffixadvancements.events.JoinEvent;
-import org.pokesplash.suffixadvancements.util.LP;
-
-import java.util.UUID;
 
 public class SuffixAdvancements implements ModInitializer {
 

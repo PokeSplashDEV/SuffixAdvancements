@@ -6,14 +6,14 @@ import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
+import org.pokesplash.suffixadvancements.util.LP;
 
 public class ReloadCommand {
 	public LiteralCommandNode<ServerCommandSource> build() {
 		return CommandManager.literal("reload")
 				.requires(ctx -> {
 					if (ctx.isExecutedByPlayer()) {
-						// TODO check permissions
-						return true;
+						return LP.hasPermission(ctx.getPlayer(), "suffixadvancements.reload");
 					} else {
 						return true;
 					}

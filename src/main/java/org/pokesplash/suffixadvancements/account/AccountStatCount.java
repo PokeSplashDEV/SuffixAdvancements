@@ -1,6 +1,6 @@
 package org.pokesplash.suffixadvancements.account;
 
-public class AccountStatCount {
+public class AccountStatCount implements AccountStatConfig {
 	private boolean isComplete;
 	private int count;
 

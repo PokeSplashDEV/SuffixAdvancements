@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.util.Utils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 

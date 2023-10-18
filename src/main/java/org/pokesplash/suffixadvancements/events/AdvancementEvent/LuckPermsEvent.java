@@ -2,7 +2,6 @@ package org.pokesplash.suffixadvancements.events.AdvancementEvent;
 
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.event.node.NodeAddEvent;
-import net.luckperms.api.node.types.SuffixNode;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
 import org.pokesplash.suffixadvancements.util.Perfectionist;

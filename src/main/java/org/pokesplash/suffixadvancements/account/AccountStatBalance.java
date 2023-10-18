@@ -1,8 +1,6 @@
 package org.pokesplash.suffixadvancements.account;
 
-import org.pokesplash.suffixadvancements.util.Perfectionist;
-
-public class AccountStatBalance {
+public class AccountStatBalance implements AccountStatConfig {
 	private boolean isComplete;
 	private double count;
 

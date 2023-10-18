@@ -3,26 +3,23 @@ package org.pokesplash.suffixadvancements.command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-import net.minecraft.command.argument.UuidArgumentType;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
+import org.pokesplash.suffixadvancements.util.LP;
 import org.pokesplash.suffixadvancements.util.Perfectionist;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class AddCommand {
 	public LiteralCommandNode<ServerCommandSource> build() {
 		return CommandManager.literal("add")
 				.requires(ctx -> {
 					if (ctx.isExecutedByPlayer()) {
-						// TODO check permissions
-						return true;
+						return LP.hasPermission(ctx.getPlayer(), "suffixadvancements.add");
 					} else {
 						return true;
 					}
@@ -35,13 +32,13 @@ public class AddCommand {
 							return builder.buildFuture();
 						})
 						.executes(this::usage)
-						.then(CommandManager.argument("player", UuidArgumentType.uuid())
+						.then(CommandManager.argument("player", StringArgumentType.string())
 								.suggests((ctx, builder) -> {
 									ArrayList<ServerPlayerEntity> players =
 											new ArrayList<>(ctx.getSource().getServer().getPlayerManager().getPlayerList());
 
 									for (ServerPlayerEntity player : players) {
-										builder.suggest(player.getUuidAsString());
+										builder.suggest(player.getName().getString());
 									}
 									return builder.buildFuture();
 								})
@@ -54,7 +51,7 @@ public class AddCommand {
 	public int run(CommandContext<ServerCommandSource> context) {
 
 		String argument = StringArgumentType.getString(context, "stat");
-		UUID player = UuidArgumentType.getUuid(context, "player"); // TODO unlikely to be UUID
+		String player = StringArgumentType.getString(context, "player");
 
 		if (!SuffixAdvancements.accounts.hasAccount(player)) {
 			context.getSource().sendMessage(Text.literal("Could not find player with uuid " + player));

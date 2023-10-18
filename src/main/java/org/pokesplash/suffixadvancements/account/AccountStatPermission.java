@@ -1,6 +1,6 @@
 package org.pokesplash.suffixadvancements.account;
 
-public class AccountStatPermission {
+public class AccountStatPermission implements AccountStatConfig {
 	private boolean isComplete;
 
 	public AccountStatPermission() {
