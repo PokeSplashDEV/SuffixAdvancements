@@ -2,6 +2,7 @@ package org.pokesplash.suffixadvancements.config;
 
 import com.google.gson.Gson;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
+import org.pokesplash.suffixadvancements.account.Account;
 import org.pokesplash.suffixadvancements.util.Utils;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class Config {
 	private PermissionConfig champion;
 	private PermissionConfig stakeholder;
 	private PermissionConfig primordial;
+	private boolean primordialActive;
 
 	public Config() {
 		dealer = new CountConfig();
@@ -52,6 +54,7 @@ public class Config {
 		champion = new PermissionConfig();
 		stakeholder = new PermissionConfig();
 		primordial = new PermissionConfig();
+		primordialActive = false;
 	}
 
 	public ArrayList<AdvancementConfig> getConfigs() {
@@ -164,6 +167,15 @@ public class Config {
 		return primordial;
 	}
 
+	public boolean isPrimordialActive() {
+		return primordialActive;
+	}
+
+	public void setPrimordialActive(boolean primordialActive) {
+		this.primordialActive = primordialActive;
+		writeToFile();
+	}
+
 	public void init() {
 		CompletableFuture<Boolean> futureRead = Utils.readFileAsync("/config/suffixadvancements/",
 				"config.json", el -> {
@@ -190,6 +202,7 @@ public class Config {
 					champion = cfg.getChampion();
 					stakeholder = cfg.getStakeholder();
 					primordial = cfg.getPrimordial();
+					primordialActive = cfg.isPrimordialActive();
 				});
 
 		if (!futureRead.join()) {
@@ -201,10 +214,22 @@ public class Config {
 					"config.json", data);
 
 			if (!futureWrite.join()) {
-				SuffixAdvancements.LOGGER.fatal("Could not write config for GTS.");
+				SuffixAdvancements.LOGGER.fatal("Could not write config for SuffixAdvancements.");
 			}
 			return;
 		}
 		SuffixAdvancements.LOGGER.info("SuffixAdvancements config file read successfully");
+	}
+
+	private void writeToFile() {
+		Gson gson = Utils.newGson();
+		String data = gson.toJson(this);
+
+		CompletableFuture<Boolean> success = Utils.writeFileAsync("/config/suffixadvancements/",
+				"config.json", data);
+
+		if (!success.join()) {
+			SuffixAdvancements.LOGGER.fatal("Could not update config for SuffixAdvancements.");
+		}
 	}
 }

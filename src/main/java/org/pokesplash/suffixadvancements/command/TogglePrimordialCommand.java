@@ -8,9 +8,9 @@ import net.minecraft.text.Text;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.util.LP;
 
-public class ReloadCommand {
+public class TogglePrimordialCommand {
 	public LiteralCommandNode<ServerCommandSource> build() {
-		return CommandManager.literal("reload")
+		return CommandManager.literal("primordial")
 				.requires(ctx -> {
 					if (ctx.isExecutedByPlayer()) {
 						return LP.hasPermission(ctx.getPlayer(), "suffixadvancements.admin");
@@ -24,9 +24,9 @@ public class ReloadCommand {
 
 	public int run(CommandContext<ServerCommandSource> context) {
 
-		SuffixAdvancements.load();
+		SuffixAdvancements.config.setPrimordialActive(!SuffixAdvancements.config.isPrimordialActive());
 
-		context.getSource().sendMessage(Text.literal("SuffixAdvancements reloaded."));
+		context.getSource().sendMessage(Text.literal("Set Primordial to " + SuffixAdvancements.config.isPrimordialActive()));
 
 		return 1;
 	}

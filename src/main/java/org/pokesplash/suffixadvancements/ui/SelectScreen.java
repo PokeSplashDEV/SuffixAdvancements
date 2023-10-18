@@ -50,7 +50,7 @@ public class SelectScreen {
 		buttons.add(new PrefixItem(cfg.getFortune(), account.getFortune(),
 				"Spend " + cfg.getFortune().getValue() + " dollars.").getButton());
 		buttons.add(new PrefixItem(cfg.getWriteoff(), account.getWriteoff(),
-				"Purchase the {item} from the shop.").getButton());
+				"Purchase the {item} from the Shop.").getButton());
 		buttons.add(new PrefixItem(cfg.getCamper(), account.getCamper(),
 				"Complete the Pokedex.").getButton());
 		buttons.add(new PrefixItem(cfg.getBountyhunter(), account.getBountyhunter(),
@@ -61,16 +61,18 @@ public class SelectScreen {
 				"Lose " + cfg.getBot().getValue() + " battles.").getButton());
 		buttons.add(new PrefixItem(cfg.getBotanist(), account.getBotanist(),
 				"Harvest " + cfg.getBotanist().getValue() + " berries.").getButton());
+		buttons.add(new PrefixItem(cfg.getBabyfactory(), account.getBabyfactory(),
+				"Hatch " + cfg.getBabyfactory().getValue() + " eggs. - Currently Not Implemented").getButton());
 		buttons.add(new PrefixItem(cfg.getAlly(), account.getAlly(),
 				"Vote " + cfg.getAlly().getValue() + " times.").getButton());
 		buttons.add(new PrefixItem(cfg.getToxic(), account.getToxic(),
-				"Sell " + cfg.getToxic().getValue() + " Legendary Pokemon on GTS.").getButton());
+				"Sell " + cfg.getToxic().getValue() + " Legendary Pokemon on STS.").getButton());
 		buttons.add(new PrefixItem(cfg.getSmurf(), account.getSmurf(),
 				"Prestige after the first 8 Gyms.").getButton());
 		buttons.add(new PrefixItem(cfg.getLucky(), account.getLucky(),
 				"Catch " + cfg.getLucky().getValue() + " shiny Pokemon.").getButton());
 		buttons.add(new PrefixItem(cfg.getQuizmaster(), account.getQuizmaster(),
-				"Answer " + cfg.getQuizmaster().getValue() + " Trivia questions successfully.").getButton());
+				"Answer " + cfg.getQuizmaster().getValue() + " Trivia questions correctly.").getButton());
 		buttons.add(new PrefixItem(cfg.getOnemore(), account.getOnemore(),
 				"Purchase " + cfg.getOnemore().getValue() + " Shiny Boosts from the shop.").getButton());
 		buttons.add(new PrefixItem(cfg.getLiberator(), account.getLiberator(),

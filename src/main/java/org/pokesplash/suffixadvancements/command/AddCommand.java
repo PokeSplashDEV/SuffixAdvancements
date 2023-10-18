@@ -19,7 +19,7 @@ public class AddCommand {
 		return CommandManager.literal("add")
 				.requires(ctx -> {
 					if (ctx.isExecutedByPlayer()) {
-						return LP.hasPermission(ctx.getPlayer(), "suffixadvancements.add");
+						return LP.hasPermission(ctx.getPlayer(), "suffixadvancements.admin");
 					} else {
 						return true;
 					}

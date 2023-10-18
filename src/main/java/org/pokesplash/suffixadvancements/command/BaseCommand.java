@@ -31,6 +31,7 @@ public class BaseCommand {
 
 		registeredCommand.addChild(new ReloadCommand().build());
 		registeredCommand.addChild(new AddCommand().build());
+		registeredCommand.addChild(new TogglePrimordialCommand().build());
 
 	}
 
