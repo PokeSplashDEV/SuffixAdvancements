@@ -88,7 +88,6 @@ public class SelectScreen {
 
 	private GooeyButton getPerfectionist(boolean isPerfection) {
 		GooeyButton.Builder button = GooeyButton.builder()
-				.display(new ItemStack(Items.NETHER_STAR))
 				.title(SuffixAdvancements.config.getPerfectionist());
 		if (isPerfection) {
 			button.onClick(e -> {
@@ -100,6 +99,7 @@ public class SelectScreen {
 
 				UIManager.closeUI(e.getPlayer());
 			});
+			button.display(new ItemStack(Items.NETHER_STAR));
 		} else {
 			Collection<String> lore = new ArrayList<>();
 			lore.add("§bComplete all other Advancements.");
@@ -108,6 +108,7 @@ public class SelectScreen {
 			lore.add("§3- Donate to us.");
 			lore.add("§3- Play within the first two weeks of the server opening.");
 
+			button.display(new ItemStack(Items.BARRIER));
 			button.lore(lore);
 		}
 		return button.build();

@@ -2,6 +2,8 @@ package org.pokesplash.suffixadvancements.ui;
 
 import ca.landonjw.gooeylibs2.api.UIManager;
 import ca.landonjw.gooeylibs2.api.button.GooeyButton;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.AccountStatBalance;
@@ -50,7 +52,7 @@ public class PrefixItem {
 			lore.add("§b" + message);
 			lore.addAll(generateLore());
 			return GooeyButton.builder()
-					.display(Utils.parseItemId(config.getDisplayItem()))
+					.display(new ItemStack(Items.BARRIER))
 					.title(config.getSuffix())
 					.lore(lore)
 					.build();
