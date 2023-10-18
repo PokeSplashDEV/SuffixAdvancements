@@ -19,7 +19,6 @@ public abstract class Perfectionist {
 		boolean unrivaled = account.getUnrivaled().isComplete();
 		boolean bot = account.getBot().isComplete();
 		boolean botanist = account.getBotanist().isComplete();
-		boolean babyfactory = account.getBabyfactory().isComplete();
 		boolean ally = account.getAlly().isComplete();
 		boolean toxic = account.getToxic().isComplete();
 		boolean smurf = account.getSmurf().isComplete();
@@ -29,7 +28,7 @@ public abstract class Perfectionist {
 		boolean liberator = account.getLiberator().isComplete();
 
 		if (dealer && highroller && fortune && writeoff && camper && bountyhunter &&
-		unrivaled && bot && botanist && babyfactory && ally && toxic && smurf && lucky &&
+		unrivaled && bot && botanist && ally && toxic && smurf && lucky &&
 				quizmaster && onemore && liberator) {
 			return true;
 		}

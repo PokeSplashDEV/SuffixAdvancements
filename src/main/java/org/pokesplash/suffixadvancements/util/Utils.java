@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
+import org.pokesplash.suffixadvancements.account.Account;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,6 +18,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -205,5 +208,111 @@ public class Utils {
 		tag.putString("id", id);
 		tag.putInt("Count", 1);
 		return ItemStack.fromNbt(tag);
+	}
+
+	public static void checkAllStats() {
+
+		ArrayList<Account> accounts = SuffixAdvancements.accounts.getAllAccounts();
+
+		for (Account account : accounts) {
+			// Dealer
+			if (account.getDealer().getCount() >= SuffixAdvancements.config.getDealer().getValue()) {
+				account.getDealer().setComplete(true);
+			}
+
+			// High Roller
+			if (account.getHighroller().getCount() >= SuffixAdvancements.config.getHighroller().getValue()) {
+				account.getHighroller().setComplete(true);
+			}
+
+			// Fortune
+			if (account.getFortune().getCount() >= SuffixAdvancements.config.getFortune().getValue()) {
+				account.getFortune().setComplete(true);
+			}
+
+			// WriteOff
+			if (LP.hasPermission(account.getOwner(), SuffixAdvancements.config.getWriteoff().getPermission())) {
+				account.getWriteoff().setComplete(true);
+			}
+
+			// Camper
+			if (LP.hasPermission(account.getOwner(), SuffixAdvancements.config.getCamper().getPermission())) {
+				account.getCamper().setComplete(true);
+			}
+
+			// BountyHunter
+			if (account.getBountyhunter().getCount() >= SuffixAdvancements.config.getBountyhunter().getValue()) {
+				account.getBountyhunter().setComplete(true);
+			}
+
+			// Unrivaled
+			if (account.getUnrivaled().getCount() >= SuffixAdvancements.config.getUnrivaled().getValue()) {
+				account.getUnrivaled().setComplete(true);
+			}
+
+			// Bot
+			if (account.getBot().getCount() >= SuffixAdvancements.config.getBot().getValue()) {
+				account.getBot().setComplete(true);
+
+			}
+
+			// Botanist
+			if (account.getBotanist().getCount() >= SuffixAdvancements.config.getBotanist().getValue()) {
+				account.getBotanist().setComplete(true);
+			}
+
+			// Ally
+			if (account.getAlly().getCount() >= SuffixAdvancements.config.getAlly().getValue()) {
+				account.getAlly().setComplete(true);
+			}
+
+			// Toxic
+			if (account.getToxic().getCount() >= SuffixAdvancements.config.getToxic().getValue()) {
+				account.getToxic().setComplete(true);
+			}
+
+			// Smurf
+			if (LP.hasPermission(account.getOwner(), SuffixAdvancements.config.getSmurf().getPermission())) {
+				account.getSmurf().setComplete(true);
+			}
+
+			// Lucky
+			if (account.getLucky().getCount() >= SuffixAdvancements.config.getLucky().getValue()) {
+				account.getLucky().setComplete(true);
+			}
+
+			// QuizMaster
+			if (account.getQuizmaster().getCount() >= SuffixAdvancements.config.getQuizmaster().getValue()) {
+				account.getQuizmaster().setComplete(true);
+			}
+
+			// OneMore
+			if (account.getOnemore().getCount() >= SuffixAdvancements.config.getOnemore().getValue()) {
+				account.getOnemore().setComplete(true);
+			}
+
+			// Liberator
+			if (account.getLiberator().getCount() >= SuffixAdvancements.config.getLiberator().getValue()) {
+				account.getLiberator().setComplete(true);
+			}
+
+			// Champion
+			if (LP.hasPermission(account.getOwner(), SuffixAdvancements.config.getChampion().getPermission())) {
+				account.getChampion().setComplete(true);
+			}
+
+			// Stakeholder
+			if (LP.hasPermission(account.getOwner(), SuffixAdvancements.config.getStakeholder().getPermission())) {
+				account.getStakeholder().setComplete(true);
+			}
+
+			// Primordial
+			if (LP.hasPermission(account.getOwner(), SuffixAdvancements.config.getPrimordial().getPermission())) {
+				account.getPrimordial().setComplete(true);
+			}
+
+			// Perfectionist
+			Perfectionist.updatePerfectionist(account);
+		}
 	}
 }

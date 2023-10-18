@@ -14,7 +14,7 @@ import org.pokesplash.suffixadvancements.util.LP;
 public class BaseCommand {
 	public void register(CommandDispatcher<ServerCommandSource> dispatcher) {
 		LiteralArgumentBuilder<ServerCommandSource> root = CommandManager
-				.literal("suffixadvancements")
+				.literal("prefix")
 				.requires(ctx -> {
 					if (ctx.isExecutedByPlayer()) {
 						return LP.hasPermission(ctx.getPlayer(), "suffixadvancements.base");
@@ -26,12 +26,13 @@ public class BaseCommand {
 
 		LiteralCommandNode<ServerCommandSource> registeredCommand = dispatcher.register(root);
 
-		dispatcher.register(CommandManager.literal("prefix").redirect(registeredCommand).executes(this::run));
+		dispatcher.register(CommandManager.literal("suffixadvancements").redirect(registeredCommand).executes(this::run));
 		dispatcher.register(CommandManager.literal("suffixadv").redirect(registeredCommand).executes(this::run));
 
 		registeredCommand.addChild(new ReloadCommand().build());
 		registeredCommand.addChild(new AddCommand().build());
 		registeredCommand.addChild(new TogglePrimordialCommand().build());
+		registeredCommand.addChild(new CheckCommand().build());
 
 	}
 

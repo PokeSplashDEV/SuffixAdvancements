@@ -14,7 +14,6 @@ public class Account {
 	private AccountStatCount unrivaled;
 	private AccountStatCount bot;
 	private AccountStatCount botanist;
-	private AccountStatCount babyfactory;
 	private AccountStatCount ally;
 	private AccountStatCount toxic;
 	private AccountStatPermission smurf;
@@ -38,7 +37,6 @@ public class Account {
 		unrivaled = new AccountStatCount();
 		bot = new AccountStatCount();
 		botanist = new AccountStatCount();
-		babyfactory = new AccountStatCount();
 		ally = new AccountStatCount();
 		toxic = new AccountStatCount();
 		smurf = new AccountStatPermission();
@@ -90,10 +88,6 @@ public class Account {
 
 	public AccountStatCount getBotanist() {
 		return botanist;
-	}
-
-	public AccountStatCount getBabyfactory() {
-		return babyfactory;
 	}
 
 	public AccountStatCount getAlly() {

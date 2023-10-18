@@ -3,6 +3,7 @@ package org.pokesplash.suffixadvancements.util;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
+import net.luckperms.api.node.NodeEqualityPredicate;
 import net.luckperms.api.node.types.PrefixNode;
 import net.luckperms.api.node.types.SuffixNode;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -29,6 +30,22 @@ public abstract class LP {
 		});
 	}
 
+	public static void removeSuffix(UUID player) {
+		LuckPermsProvider.get().getUserManager().modifyUser(player, e -> {
+
+			ArrayList<Node> nodes = new ArrayList<>(e.data().toCollection());
+
+			for (Node node : nodes) {
+
+				if (node instanceof PrefixNode) {
+					if (((PrefixNode) node).getPriority() == 41) {
+						e.data().remove(node);
+					}
+				}
+			}
+		});
+	}
+
 	/**
 	 * Checks a user has a given permission.
 	 * @param user The user to check the permission on.
@@ -44,5 +61,28 @@ public abstract class LP {
 		}
 
 		return playerLP.getCachedData().getPermissionData().checkPermission(permission).asBoolean();
+	}
+	public static boolean hasPermission(UUID user, String permission) {
+		User playerLP = LuckPermsProvider.get().getUserManager().getUser(user);
+
+		if (playerLP == null) {
+			SuffixAdvancements.LOGGER.error("Could not find player " + user + " in LuckPerms.");
+			return false;
+		}
+
+		return playerLP.getCachedData().getPermissionData().checkPermission(permission).asBoolean();
+	}
+
+	public static boolean hasNode(Node suffix, UUID player) {
+		ArrayList<Node> nodes =
+				new ArrayList<>(LuckPermsProvider.get().getUserManager().getUser(player).data().toCollection());
+
+		for (Node node : nodes) {
+
+			if (node.equals(suffix, NodeEqualityPredicate.ONLY_KEY)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

@@ -24,6 +24,10 @@ public class AccountProvider {
 		return accounts.get(playerUuid);
 	}
 
+	public ArrayList<Account> getAllAccounts() {
+		return new ArrayList<>(accounts.values());
+	}
+
 	public boolean hasAccount(String player) {
 		return getAccount(player) != null;
 	}

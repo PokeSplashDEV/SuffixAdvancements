@@ -4,6 +4,7 @@ import ca.landonjw.gooeylibs2.api.UIManager;
 import ca.landonjw.gooeylibs2.api.button.GooeyButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.AccountStatBalance;
@@ -12,24 +13,39 @@ import org.pokesplash.suffixadvancements.account.AccountStatCount;
 import org.pokesplash.suffixadvancements.config.AdvancementConfig;
 import org.pokesplash.suffixadvancements.config.BalanceConfig;
 import org.pokesplash.suffixadvancements.config.CountConfig;
+import org.pokesplash.suffixadvancements.config.NodeProvider;
 import org.pokesplash.suffixadvancements.util.LP;
 import org.pokesplash.suffixadvancements.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.UUID;
 
 public class PrefixItem {
 	private AdvancementConfig config;
 	private AccountStatConfig account;
 	private String message;
+	private UUID player;
 
-	public PrefixItem(AdvancementConfig config, AccountStatConfig account, String message) {
+	public PrefixItem(AdvancementConfig config, AccountStatConfig account, String message, UUID player) {
 		this.config = config;
 		this.account = account;
 		this.message = message;
+		this.player = player;
 	}
 
 	public GooeyButton getButton() {
+
+		if (LP.hasNode(SuffixAdvancements.nodes.getNode(config), player)) {
+			Collection<String> lore = new ArrayList<>();
+			lore.add("§6You currently have this Prefix enabled.");
+			return GooeyButton.builder()
+					.display(Utils.parseItemId(config.getDisplayItem()))
+					.title(config.getSuffix())
+					.lore(lore)
+					.build();
+		}
+
 		if (account.isComplete()) {
 			Collection<String> lore = new ArrayList<>();
 			lore.add("§aComplete");

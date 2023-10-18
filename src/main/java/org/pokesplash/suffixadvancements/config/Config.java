@@ -18,7 +18,6 @@ public class Config {
 	private CountConfig unrivaled;
 	private CountConfig bot;
 	private CountConfig botanist;
-	private CountConfig babyfactory;
 	private CountConfig ally;
 	private CountConfig toxic;
 	private PermissionConfig smurf;
@@ -42,7 +41,6 @@ public class Config {
 		unrivaled = new CountConfig();
 		bot = new CountConfig();
 		botanist = new CountConfig();
-		babyfactory = new CountConfig();
 		ally = new CountConfig();
 		toxic = new CountConfig();
 		smurf = new PermissionConfig();
@@ -68,7 +66,6 @@ public class Config {
 		list.add(unrivaled);
 		list.add(bot);
 		list.add(botanist);
-		list.add(babyfactory);
 		list.add(ally);
 		list.add(toxic);
 		list.add(smurf);
@@ -117,10 +114,6 @@ public class Config {
 
 	public CountConfig getBotanist() {
 		return botanist;
-	}
-
-	public CountConfig getBabyfactory() {
-		return babyfactory;
 	}
 
 	public CountConfig getAlly() {
@@ -190,7 +183,6 @@ public class Config {
 					unrivaled = cfg.getUnrivaled();
 					bot = cfg.getBot();
 					botanist = cfg.getBotanist();
-					babyfactory = cfg.getBabyfactory();
 					ally = cfg.getAlly();
 					toxic = cfg.getToxic();
 					smurf = cfg.getSmurf();

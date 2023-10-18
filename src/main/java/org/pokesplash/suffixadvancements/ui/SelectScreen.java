@@ -17,6 +17,7 @@ import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
 import org.pokesplash.suffixadvancements.config.Config;
 import org.pokesplash.suffixadvancements.util.LP;
+import org.pokesplash.suffixadvancements.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,7 +33,7 @@ public class SelectScreen {
 				.build();
 
 		LinkedPage page = PaginationHelper.createPagesFromPlaceholders(template, buttons, null);
-		page.setTitle(Hunt.language.getTitle());
+		page.setTitle("§9Choose a Prefix");
 
 		return page;
 	}
@@ -43,54 +44,76 @@ public class SelectScreen {
 
 		ArrayList<Button> buttons = new ArrayList<>();
 
+		Collection<String> lore = new ArrayList<>();
+		lore.add("§aRemove your active Prefix.");
+		buttons.add(GooeyButton.builder()
+				.display(new ItemStack(Items.END_CRYSTAL))
+				.title("§2Remove Prefix")
+				.onClick(e -> {
+					LP.removeSuffix(e.getPlayer().getUuid());
+
+					UIManager.closeUI(e.getPlayer());
+				})
+				.lore(lore)
+				.build());
+
 		buttons.add(new PrefixItem(cfg.getDealer(), account.getDealer(),
-				"Sell " + cfg.getDealer().getValue() + " Pokemon on GTS.").getButton());
+				"Sell " + cfg.getDealer().getValue() + " Pokemon on GTS.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getHighroller(), account.getHighroller(),
-				"Spend " + cfg.getHighroller().getValue() + " dollars.").getButton());
+				"Spend " + cfg.getHighroller().getValue() + " dollars.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getFortune(), account.getFortune(),
-				"Spend " + cfg.getFortune().getValue() + " dollars.").getButton());
+				"Spend " + cfg.getFortune().getValue() + " dollars.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getWriteoff(), account.getWriteoff(),
-				"Purchase the {item} from the Shop.").getButton());
+				"Purchase the {item} from the Shop.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getCamper(), account.getCamper(),
-				"Complete the Pokedex.").getButton());
+				"Complete the Pokedex.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getBountyhunter(), account.getBountyhunter(),
-				"Hunt " + cfg.getBountyhunter().getValue() + " Pokemon in Hunt.").getButton());
+				"Hunt " + cfg.getBountyhunter().getValue() + " Pokemon in Hunt.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getUnrivaled(), account.getUnrivaled(),
-				"Win " + cfg.getUnrivaled().getValue() + " battles.").getButton());
+				"Win " + cfg.getUnrivaled().getValue() + " battles.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getBot(), account.getBot(),
-				"Lose " + cfg.getBot().getValue() + " battles.").getButton());
+				"Lose " + cfg.getBot().getValue() + " battles.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getBotanist(), account.getBotanist(),
-				"Harvest " + cfg.getBotanist().getValue() + " berries.").getButton());
-		buttons.add(new PrefixItem(cfg.getBabyfactory(), account.getBabyfactory(),
-				"Hatch " + cfg.getBabyfactory().getValue() + " eggs. - Currently Not Implemented").getButton());
+				"Harvest " + cfg.getBotanist().getValue() + " berries.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getAlly(), account.getAlly(),
-				"Vote " + cfg.getAlly().getValue() + " times.").getButton());
+				"Vote " + cfg.getAlly().getValue() + " times.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getToxic(), account.getToxic(),
-				"Sell " + cfg.getToxic().getValue() + " Legendary Pokemon on STS.").getButton());
+				"Sell " + cfg.getToxic().getValue() + " Legendary Pokemon on STS.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getSmurf(), account.getSmurf(),
-				"Prestige after the first 8 Gyms.").getButton());
+				"Prestige after the first 8 Gyms.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getLucky(), account.getLucky(),
-				"Catch " + cfg.getLucky().getValue() + " shiny Pokemon.").getButton());
+				"Catch " + cfg.getLucky().getValue() + " shiny Pokemon.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getQuizmaster(), account.getQuizmaster(),
-				"Answer " + cfg.getQuizmaster().getValue() + " Trivia questions correctly.").getButton());
+				"Answer " + cfg.getQuizmaster().getValue() + " Trivia questions correctly.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getOnemore(), account.getOnemore(),
-				"Purchase " + cfg.getOnemore().getValue() + " Shiny Boosts from the shop.").getButton());
+				"Purchase " + cfg.getOnemore().getValue() + " Shiny Boosts from the shop.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getLiberator(), account.getLiberator(),
-				"Release " + cfg.getLiberator().getValue() + " Pokemon.").getButton());
+				"Release " + cfg.getLiberator().getValue() + " Pokemon.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getChampion(), account.getChampion(),
-				"Become Champion of the gyms.").getButton());
+				"Become Champion of the gyms.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getStakeholder(), account.getStakeholder(),
-				"Donate to us.").getButton());
+				"Donate to us.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getPrimordial(), account.getPrimordial(),
-				"Play within the first two weeks of the server opening.").getButton());
-		buttons.add(getPerfectionist(account.isPerfectionist()));
+				"Play within the first two weeks of the server opening.", player.getUuid()).getButton());
+		buttons.add(getPerfectionist(account.isPerfectionist(), player));
 
 		return buttons;
 	}
 
-	private GooeyButton getPerfectionist(boolean isPerfection) {
+	private GooeyButton getPerfectionist(boolean isPerfection, ServerPlayerEntity player) {
 		GooeyButton.Builder button = GooeyButton.builder()
 				.title(SuffixAdvancements.config.getPerfectionist());
+
+		if (LP.hasNode(SuffixAdvancements.nodes.getPerfection(), player.getUuid())) {
+			Collection<String> lore = new ArrayList<>();
+			lore.add("§6You currently have this Prefix enabled.");
+			return GooeyButton.builder()
+					.title(SuffixAdvancements.config.getPerfectionist())
+					.display(new ItemStack(Items.NETHER_STAR))
+					.lore(lore)
+					.build();
+		}
+
 		if (isPerfection) {
 			button.onClick(e -> {
 				LP.changeSuffix(SuffixAdvancements.nodes.getPerfection(),
