@@ -306,11 +306,6 @@ public class Utils {
 				account.getStakeholder().setComplete(true);
 			}
 
-			// Primordial
-			if (LP.hasPermission(account.getOwner(), SuffixAdvancements.config.getPrimordial().getPermission())) {
-				account.getPrimordial().setComplete(true);
-			}
-
 			// Perfectionist
 			Perfectionist.updatePerfectionist(account);
 		}

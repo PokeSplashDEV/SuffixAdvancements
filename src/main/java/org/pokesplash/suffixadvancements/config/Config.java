@@ -28,7 +28,7 @@ public class Config {
 	private String perfectionist;
 	private PermissionConfig champion;
 	private PermissionConfig stakeholder;
-	private PermissionConfig primordial;
+	private StandardConfig primordial;
 	private boolean primordialActive;
 
 	public Config() {
@@ -51,7 +51,7 @@ public class Config {
 		perfectionist = "[Perfectionist]";
 		champion = new PermissionConfig();
 		stakeholder = new PermissionConfig();
-		primordial = new PermissionConfig();
+		primordial = new StandardConfig();
 		primordialActive = false;
 	}
 
@@ -156,7 +156,7 @@ public class Config {
 		return stakeholder;
 	}
 
-	public PermissionConfig getPrimordial() {
+	public StandardConfig getPrimordial() {
 		return primordial;
 	}
 

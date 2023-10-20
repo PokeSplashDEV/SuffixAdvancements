@@ -19,5 +19,12 @@ public class JoinEvent implements ServerPlayConnectionEvents.Join {
 			account.setUsername(handler.getPlayer().getName().getString());
 			SuffixAdvancements.accounts.updateAccount(account);
 		}
+
+		// Checks primordial is active, then sets it for anyone who joins.
+		if (SuffixAdvancements.config.isPrimordialActive()) {
+			if (!account.getPrimordial().isComplete()) {
+				account.getPrimordial().setComplete(true);
+			}
+		}
 	}
 }

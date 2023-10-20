@@ -55,14 +55,6 @@ public class LuckPermsEvent {
 					account.getStakeholder().setComplete(true);
 					SuffixAdvancements.accounts.updateAccount(account);
 				}
-
-				// primordial check.
-				String primordialNode = SuffixAdvancements.config.getPrimordial().getPermission();
-				if (primordialNode.equalsIgnoreCase(e.getNode().getKey())) {
-					Account account = SuffixAdvancements.accounts.getAccount(e.getTarget().getFriendlyName());
-					account.getPrimordial().setComplete(true);
-					SuffixAdvancements.accounts.updateAccount(account);
-				}
 			}
 		});
 	}
