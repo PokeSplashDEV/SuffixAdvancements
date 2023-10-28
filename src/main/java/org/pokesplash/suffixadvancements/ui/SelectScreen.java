@@ -9,6 +9,7 @@ import ca.landonjw.gooeylibs2.api.page.LinkedPage;
 import ca.landonjw.gooeylibs2.api.page.Page;
 import ca.landonjw.gooeylibs2.api.template.types.ChestTemplate;
 import com.cobblemon.mod.common.Cobblemon;
+import com.cobblemon.mod.common.CobblemonItems;
 import com.cobblemon.mod.common.api.data.JsonDataRegistry;
 import com.cobblemon.mod.common.api.pokeball.catching.calculators.PokedexProgressCaptureMultiplierProvider;
 import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
@@ -63,13 +64,13 @@ public class SelectScreen {
 				.build());
 
 		buttons.add(new PrefixItem(cfg.getDealer(), account.getDealer(),
-				"Sell " + cfg.getDealer().getValue() + " Pokemon on GTS.", player.getUuid()).getButton());
+				"Sell 1,000,000 Pokemon on GTS.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getHighroller(), account.getHighroller(),
-				"Spend " + cfg.getHighroller().getValue() + " dollars.", player.getUuid()).getButton());
+				"Spend 5,000,000 dollars.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getFortune(), account.getFortune(),
 				"Spend " + cfg.getFortune().getValue() + " dollars.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getWriteoff(), account.getWriteoff(),
-				"Purchase the {item} from the Shop.", player.getUuid()).getButton());
+				"Purchase the Prefix from the Shop (Extra).", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getCamper(), account.getCamper(),
 				"Complete the Pokedex.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getBountyhunter(), account.getBountyhunter(),
@@ -114,7 +115,7 @@ public class SelectScreen {
 			lore.add("§6You currently have this Prefix enabled.");
 			return GooeyButton.builder()
 					.title(SuffixAdvancements.config.getPerfectionist())
-					.display(new ItemStack(Items.NETHER_STAR))
+					.display(new ItemStack(CobblemonItems.KINGS_ROCK))
 					.lore(lore)
 					.build();
 		}
@@ -129,7 +130,7 @@ public class SelectScreen {
 
 				UIManager.closeUI(e.getPlayer());
 			});
-			button.display(new ItemStack(Items.NETHER_STAR));
+			button.display(new ItemStack(CobblemonItems.KINGS_ROCK));
 		} else {
 			Collection<String> lore = new ArrayList<>();
 			lore.add("§bComplete all other Advancements.");

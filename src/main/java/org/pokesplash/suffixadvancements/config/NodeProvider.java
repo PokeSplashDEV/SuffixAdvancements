@@ -31,10 +31,10 @@ public class NodeProvider {
 
 		for (AdvancementConfig config : SuffixAdvancements.config.getConfigs()) {
 			nodes.put(config,
-					PrefixNode.builder(config.getSuffix(), 41).build());
+					PrefixNode.builder(config.getSuffix(), 351).withContext("server", "cobblemon").build());
 		}
 
 		perfection = PrefixNode.builder(SuffixAdvancements.config.getPerfectionist(),
-				41).build();
+				351).build();
 	}
 }

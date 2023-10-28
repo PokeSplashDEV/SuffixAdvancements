@@ -21,7 +21,7 @@ public abstract class LP {
 			for (Node node : nodes) {
 
 				if (node instanceof PrefixNode) {
-					if (((PrefixNode) node).getPriority() == 41) {
+					if (((PrefixNode) node).getPriority() == 351) {
 						e.data().remove(node);
 					}
 				}
