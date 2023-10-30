@@ -13,6 +13,7 @@ public abstract class Perfectionist {
 		boolean dealer = account.getDealer().isComplete();
 		boolean highroller = account.getHighroller().isComplete();
 		boolean fortune = account.getFortune().isComplete();
+		boolean babyFactory = account.getBabyFactory().isComplete();
 		boolean writeoff = account.getWriteoff().isComplete();
 		boolean camper = account.getCamper().isComplete();
 		boolean bountyhunter = account.getBountyhunter().isComplete();
@@ -27,7 +28,7 @@ public abstract class Perfectionist {
 		boolean onemore = account.getOnemore().isComplete();
 		boolean liberator = account.getLiberator().isComplete();
 
-		if (dealer && highroller && fortune && writeoff && camper && bountyhunter &&
+		if (dealer && highroller && fortune && babyFactory && writeoff && camper && bountyhunter &&
 		unrivaled && bot && botanist && ally && toxic && smurf && lucky &&
 				quizmaster && onemore && liberator) {
 			return true;

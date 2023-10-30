@@ -2,7 +2,6 @@ package org.pokesplash.suffixadvancements.config;
 
 import com.google.gson.Gson;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
-import org.pokesplash.suffixadvancements.account.Account;
 import org.pokesplash.suffixadvancements.util.Utils;
 
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ public class Config {
 	private CountConfig dealer;
 	private BalanceConfig highroller;
 	private BalanceConfig fortune;
+	private CountConfig babyFactory;
 	private PermissionConfig writeoff;
 	private PermissionConfig camper;
 	private CountConfig bountyhunter;
@@ -35,6 +35,7 @@ public class Config {
 		dealer = new CountConfig();
 		highroller = new BalanceConfig();
 		fortune = new BalanceConfig();
+		babyFactory = new CountConfig();
 		writeoff = new PermissionConfig();
 		camper = new PermissionConfig();
 		bountyhunter = new CountConfig();
@@ -60,6 +61,7 @@ public class Config {
 		list.add(dealer);
 		list.add(highroller);
 		list.add(fortune);
+		list.add(babyFactory);
 		list.add(writeoff);
 		list.add(camper);
 		list.add(bountyhunter);
@@ -164,6 +166,10 @@ public class Config {
 		return primordialActive;
 	}
 
+	public CountConfig getBabyFactory() {
+		return babyFactory;
+	}
+
 	public void setPrimordialActive(boolean primordialActive) {
 		this.primordialActive = primordialActive;
 		writeToFile();
@@ -177,6 +183,7 @@ public class Config {
 					dealer = cfg.getDealer();
 					highroller = cfg.getHighroller();
 					fortune = cfg.getFortune();
+					babyFactory = cfg.getBabyFactory();
 					writeoff = cfg.getWriteoff();
 					camper = cfg.getCamper();
 					bountyhunter = cfg.getBountyhunter();

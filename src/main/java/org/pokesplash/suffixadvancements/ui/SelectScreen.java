@@ -8,22 +8,15 @@ import ca.landonjw.gooeylibs2.api.helpers.PaginationHelper;
 import ca.landonjw.gooeylibs2.api.page.LinkedPage;
 import ca.landonjw.gooeylibs2.api.page.Page;
 import ca.landonjw.gooeylibs2.api.template.types.ChestTemplate;
-import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.CobblemonItems;
-import com.cobblemon.mod.common.api.data.JsonDataRegistry;
-import com.cobblemon.mod.common.api.pokeball.catching.calculators.PokedexProgressCaptureMultiplierProvider;
-import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
-import com.cobblemon.mod.common.pokemon.Species;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
-import org.pokesplash.hunt.Hunt;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
 import org.pokesplash.suffixadvancements.config.Config;
 import org.pokesplash.suffixadvancements.util.LP;
-import org.pokesplash.suffixadvancements.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -64,11 +57,13 @@ public class SelectScreen {
 				.build());
 
 		buttons.add(new PrefixItem(cfg.getDealer(), account.getDealer(),
-				"Sell 1,000,000 Pokemon on GTS.", player.getUuid()).getButton());
+				"Sell " + cfg.getDealer().getValue() + " Pokemon on GTS.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getHighroller(), account.getHighroller(),
-				"Spend 5,000,000 dollars.", player.getUuid()).getButton());
+				"Spend 1,000,000 dollars.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getFortune(), account.getFortune(),
-				"Spend " + cfg.getFortune().getValue() + " dollars.", player.getUuid()).getButton());
+				"Spend 5,000,000 dollars.", player.getUuid()).getButton());
+		buttons.add(new PrefixItem(cfg.getBabyFactory(), account.getBabyFactory(),
+				"Breed " + cfg.getBabyFactory().getValue() + " Pokemon.", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getWriteoff(), account.getWriteoff(),
 				"Purchase the Prefix from the Shop (Extra).", player.getUuid()).getButton());
 		buttons.add(new PrefixItem(cfg.getCamper(), account.getCamper(),

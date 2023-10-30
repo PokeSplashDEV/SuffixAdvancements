@@ -45,6 +45,7 @@ public class SuffixAdvancements implements ModInitializer {
 			new BountyHunterEvent().registerEvent();
 			new QuizMasterEvent().registerEvent();
 			new ToxicEvent().registerEvent();
+			new BabyFactoryEvent().registerEvent();
 		});
 	}
 

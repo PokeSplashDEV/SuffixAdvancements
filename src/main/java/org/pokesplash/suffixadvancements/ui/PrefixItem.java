@@ -4,7 +4,6 @@ import ca.landonjw.gooeylibs2.api.UIManager;
 import ca.landonjw.gooeylibs2.api.button.GooeyButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.AccountStatBalance;
@@ -13,7 +12,6 @@ import org.pokesplash.suffixadvancements.account.AccountStatCount;
 import org.pokesplash.suffixadvancements.config.AdvancementConfig;
 import org.pokesplash.suffixadvancements.config.BalanceConfig;
 import org.pokesplash.suffixadvancements.config.CountConfig;
-import org.pokesplash.suffixadvancements.config.NodeProvider;
 import org.pokesplash.suffixadvancements.util.LP;
 import org.pokesplash.suffixadvancements.util.Utils;
 

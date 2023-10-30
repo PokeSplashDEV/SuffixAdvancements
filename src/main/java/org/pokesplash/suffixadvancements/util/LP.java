@@ -5,7 +5,6 @@ import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 import net.luckperms.api.node.NodeEqualityPredicate;
 import net.luckperms.api.node.types.PrefixNode;
-import net.luckperms.api.node.types.SuffixNode;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 
@@ -38,7 +37,7 @@ public abstract class LP {
 			for (Node node : nodes) {
 
 				if (node instanceof PrefixNode) {
-					if (((PrefixNode) node).getPriority() == 41) {
+					if (((PrefixNode) node).getPriority() == 351) {
 						e.data().remove(node);
 					}
 				}

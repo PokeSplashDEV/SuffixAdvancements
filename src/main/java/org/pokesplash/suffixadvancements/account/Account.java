@@ -8,6 +8,7 @@ public class Account {
 	private AccountStatCount dealer;
 	private AccountStatBalance highroller;
 	private AccountStatBalance fortune;
+	private AccountStatCount babyFactory;
 	private AccountStatPermission writeoff;
 	private AccountStatPermission camper;
 	private AccountStatCount bountyhunter;
@@ -31,6 +32,7 @@ public class Account {
 		dealer = new AccountStatCount();
 		highroller = new AccountStatBalance();
 		fortune = new AccountStatBalance();
+		babyFactory = new AccountStatCount();
 		writeoff = new AccountStatPermission();
 		camper = new AccountStatPermission();
 		bountyhunter = new AccountStatCount();
@@ -64,6 +66,10 @@ public class Account {
 
 	public AccountStatBalance getFortune() {
 		return fortune;
+	}
+
+	public AccountStatCount getBabyFactory() {
+		return babyFactory;
 	}
 
 	public AccountStatPermission getWriteoff() {
