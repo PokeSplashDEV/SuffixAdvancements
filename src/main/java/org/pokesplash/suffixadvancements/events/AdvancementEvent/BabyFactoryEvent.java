@@ -8,7 +8,7 @@ import org.pokesplash.suffixadvancements.util.Perfectionist;
 public class BabyFactoryEvent {
 	public void registerEvent() {
 		DayCareEvents.RETRIEVE_EGG.subscribe(e -> {
-			Account acc = SuffixAdvancements.accounts.getAccount(e.getPlayer());
+			Account acc = SuffixAdvancements.accounts.getAccount(e.getPlayer().getUuid());
 
 			acc.getBabyFactory().addCount();
 
