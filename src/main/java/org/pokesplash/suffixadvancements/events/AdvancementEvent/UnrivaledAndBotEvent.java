@@ -11,33 +11,37 @@ import org.pokesplash.suffixadvancements.util.Perfectionist;
 public class UnrivaledAndBotEvent {
 	public void registerEvent() {
 		CobblemonEvents.BATTLE_VICTORY.subscribe(Priority.NORMAL, (el) -> {
-			// Unrivaled
-			for (BattleActor player : el.getWinners()) {
-				Account acc = SuffixAdvancements.accounts.getAccount(player.getUuid());
-				acc.getUnrivaled().addCount();
 
-				if (acc.getUnrivaled().getCount() >= SuffixAdvancements.config.getUnrivaled().getValue()) {
-					acc.getUnrivaled().setComplete(true);
+			if (el.getBattle().isPvP() == true) {
+				// Unrivaled
+				for (BattleActor player : el.getWinners()) {
+					Account acc = SuffixAdvancements.accounts.getAccount(player.getUuid());
+					acc.getUnrivaled().addCount();
 
-					Perfectionist.updatePerfectionist(acc);
+					if (acc.getUnrivaled().getCount() >= SuffixAdvancements.config.getUnrivaled().getValue()) {
+						acc.getUnrivaled().setComplete(true);
+
+						Perfectionist.updatePerfectionist(acc);
+					}
+
+					SuffixAdvancements.accounts.updateAccount(acc);
 				}
 
-				SuffixAdvancements.accounts.updateAccount(acc);
-			}
+				// Bot
+				for (BattleActor player : el.getLosers()) {
+					Account acc = SuffixAdvancements.accounts.getAccount(player.getUuid());
+					acc.getBot().addCount();
 
-			// Bot
-			for (BattleActor player : el.getLosers()) {
-				Account acc = SuffixAdvancements.accounts.getAccount(player.getUuid());
-				acc.getBot().addCount();
+					if (acc.getBot().getCount() >= SuffixAdvancements.config.getBot().getValue()) {
+						acc.getBot().setComplete(true);
 
-				if (acc.getBot().getCount() >= SuffixAdvancements.config.getBot().getValue()) {
-					acc.getBot().setComplete(true);
+						Perfectionist.updatePerfectionist(acc);
+					}
 
-					Perfectionist.updatePerfectionist(acc);
+					SuffixAdvancements.accounts.updateAccount(acc);
 				}
-
-				SuffixAdvancements.accounts.updateAccount(acc);
 			}
+
 			return Unit.INSTANCE;
 		});
 	}

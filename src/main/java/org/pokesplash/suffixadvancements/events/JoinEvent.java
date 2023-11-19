@@ -12,7 +12,9 @@ public class JoinEvent implements ServerPlayConnectionEvents.Join {
 	public void onPlayReady(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
 		Account account = SuffixAdvancements.accounts.createAccount(handler.getPlayer().getUuid());
 
-		handler.getPlayer().getStatHandler();
+		if (account == null) {
+			return;
+		}
 
 		// If usernames don't match, update it.
 		if (!handler.getPlayer().getName().getString().equalsIgnoreCase(account.getUsername())) {

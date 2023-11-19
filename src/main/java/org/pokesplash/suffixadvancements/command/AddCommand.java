@@ -50,38 +50,47 @@ public class AddCommand {
 
 	public int run(CommandContext<ServerCommandSource> context) {
 
-		String argument = StringArgumentType.getString(context, "stat");
-		String player = StringArgumentType.getString(context, "player");
+		try {
+			String argument = StringArgumentType.getString(context, "stat");
+			String player = StringArgumentType.getString(context, "player");
 
-		if (!SuffixAdvancements.accounts.hasAccount(player)) {
-			context.getSource().sendMessage(Text.literal("Could not find player with uuid " + player));
-			return 1;
-		}
-
-		Account account = SuffixAdvancements.accounts.getAccount(player);
-
-		if (argument.equalsIgnoreCase("ally")) {
-			account.getAlly().addCount();
-			if (account.getAlly().getCount() >= SuffixAdvancements.config.getAlly().getValue()) {
-				account.getAlly().setComplete(true);
+			if (!SuffixAdvancements.accounts.hasAccount(player)) {
+				context.getSource().sendMessage(Text.literal("Could not find player with uuid " + player));
+				return 1;
 			}
-			SuffixAdvancements.accounts.updateAccount(account);
-			Perfectionist.updatePerfectionist(account);
-			return 1;
-		}
 
-		if (argument.equalsIgnoreCase("onemore")) {
-			account.getOnemore().addCount();
-			if (account.getOnemore().getCount() >= SuffixAdvancements.config.getOnemore().getValue()) {
-				account.getOnemore().setComplete(true);
+			Account account = SuffixAdvancements.accounts.getAccount(player);
+
+			if (account == null) {
+				context.getSource().sendMessage(Text.literal("Account " + player + " returned null."));
+				return 1;
 			}
-			SuffixAdvancements.accounts.updateAccount(account);
-			Perfectionist.updatePerfectionist(account);
-			return 1;
-		}
 
-		context.getSource().sendMessage(Text.literal("This command only accepts \"ally\" or \"onemore\" as a " +
-				"stat"));
+			if (argument.equalsIgnoreCase("ally")) {
+				account.getAlly().addCount();
+				if (account.getAlly().getCount() >= SuffixAdvancements.config.getAlly().getValue()) {
+					account.getAlly().setComplete(true);
+				}
+				SuffixAdvancements.accounts.updateAccount(account);
+				Perfectionist.updatePerfectionist(account);
+				return 1;
+			}
+
+			if (argument.equalsIgnoreCase("onemore")) {
+				account.getOnemore().addCount();
+				if (account.getOnemore().getCount() >= SuffixAdvancements.config.getOnemore().getValue()) {
+					account.getOnemore().setComplete(true);
+				}
+				SuffixAdvancements.accounts.updateAccount(account);
+				Perfectionist.updatePerfectionist(account);
+				return 1;
+			}
+
+			context.getSource().sendMessage(Text.literal("This command only accepts \"ally\" or \"onemore\" as a " +
+					"stat"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return 1;
 	}
 

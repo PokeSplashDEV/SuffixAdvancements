@@ -45,16 +45,20 @@ public class AccountProvider {
 
 	public Account createAccount(UUID playerUuid) {
 		if (!accounts.containsKey(playerUuid)) {
-			Account newAccount = new Account(playerUuid);
-			accounts.put(playerUuid, newAccount);
-			writeToFile(newAccount);
+			if (playerUuid != null) {
+				Account newAccount = new Account(playerUuid);
+				accounts.put(playerUuid, newAccount);
+				writeToFile(newAccount);
+			}
 		}
 		return accounts.get(playerUuid);
 	}
 
 	public void updateAccount(Account account) {
-		accounts.put(account.getOwner(), account);
-		writeToFile(account);
+		if (account != null) {
+			accounts.put(account.getOwner(), account);
+			writeToFile(account);
+		}
 	}
 
 
