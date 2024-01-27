@@ -5,6 +5,7 @@ import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 import net.luckperms.api.node.NodeEqualityPredicate;
 import net.luckperms.api.node.types.PrefixNode;
+import net.luckperms.api.node.types.SuffixNode;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public abstract class LP {
-	public static void changeSuffix(PrefixNode suffix, UUID player) {
+	public static void changePrefix(PrefixNode suffix, UUID player) {
 		LuckPermsProvider.get().getUserManager().modifyUser(player, e -> {
 
 			ArrayList<Node> nodes = new ArrayList<>(e.data().toCollection());
@@ -29,7 +30,7 @@ public abstract class LP {
 		});
 	}
 
-	public static void removeSuffix(UUID player) {
+	public static void removePrefix(UUID player) {
 		LuckPermsProvider.get().getUserManager().modifyUser(player, e -> {
 
 			ArrayList<Node> nodes = new ArrayList<>(e.data().toCollection());
@@ -38,6 +39,39 @@ public abstract class LP {
 
 				if (node instanceof PrefixNode) {
 					if (((PrefixNode) node).getPriority() == 351) {
+						e.data().remove(node);
+					}
+				}
+			}
+		});
+	}
+
+	public static void changeSuffix(SuffixNode suffix, UUID player) {
+		LuckPermsProvider.get().getUserManager().modifyUser(player, e -> {
+
+			ArrayList<Node> nodes = new ArrayList<>(e.data().toCollection());
+
+			for (Node node : nodes) {
+
+				if (node instanceof SuffixNode) {
+					if (((SuffixNode) node).getPriority() == 351) {
+						e.data().remove(node);
+					}
+				}
+			}
+			e.data().add(suffix);
+		});
+	}
+
+	public static void removeSuffix(UUID player) {
+		LuckPermsProvider.get().getUserManager().modifyUser(player, e -> {
+
+			ArrayList<Node> nodes = new ArrayList<>(e.data().toCollection());
+
+			for (Node node : nodes) {
+
+				if (node instanceof SuffixNode) {
+					if (((SuffixNode) node).getPriority() == 351) {
 						e.data().remove(node);
 					}
 				}

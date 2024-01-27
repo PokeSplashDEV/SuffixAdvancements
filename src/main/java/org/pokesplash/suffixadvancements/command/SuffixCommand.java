@@ -11,10 +11,10 @@ import net.minecraft.text.Text;
 import org.pokesplash.suffixadvancements.ui.SelectScreen;
 import org.pokesplash.suffixadvancements.util.LP;
 
-public class BaseCommand {
+public class SuffixCommand {
 	public void register(CommandDispatcher<ServerCommandSource> dispatcher) {
 		LiteralArgumentBuilder<ServerCommandSource> root = CommandManager
-				.literal("prefix")
+				.literal("suffix")
 				.requires(ctx -> {
 					if (ctx.isExecutedByPlayer()) {
 						return LP.hasPermission(ctx.getPlayer(), "suffixadvancements.base");
@@ -25,15 +25,6 @@ public class BaseCommand {
 				.executes(this::run);
 
 		LiteralCommandNode<ServerCommandSource> registeredCommand = dispatcher.register(root);
-
-		dispatcher.register(CommandManager.literal("suffixadvancements").redirect(registeredCommand).executes(this::run));
-		dispatcher.register(CommandManager.literal("suffixadv").redirect(registeredCommand).executes(this::run));
-
-		registeredCommand.addChild(new ReloadCommand().build());
-		registeredCommand.addChild(new AddCommand().build());
-		registeredCommand.addChild(new TogglePrimordialCommand().build());
-		registeredCommand.addChild(new CheckCommand().build());
-
 	}
 
 	public int run(CommandContext<ServerCommandSource> context) {
@@ -43,7 +34,7 @@ public class BaseCommand {
 		}
 
 		UIManager.openUIForcefully(context.getSource().getPlayer(),
-				new SelectScreen().open(context.getSource().getPlayer(), true));
+				new SelectScreen().open(context.getSource().getPlayer(), false));
 
 		return 1;
 	}

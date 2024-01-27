@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import org.pokesplash.daycare.util.LuckPermsUtils;
 import org.pokesplash.suffixadvancements.SuffixAdvancements;
 import org.pokesplash.suffixadvancements.account.Account;
 import org.pokesplash.suffixadvancements.config.Config;
@@ -22,22 +23,24 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SelectScreen {
-	public Page open(ServerPlayerEntity player) {
-		ArrayList<Button> buttons = getSuffixButtons(player);
+	public Page open(ServerPlayerEntity player, boolean isPrefix) {
+		ArrayList<Button> buttons = isPrefix ? getPrefixButtons(player) : getSuffixButtons(player);
 
 		PlaceholderButton placeholder = new PlaceholderButton();
 
-		ChestTemplate template = ChestTemplate.builder(3)
-				.rectangle(0, 0, 3, 9, placeholder)
+		int rows = (int) Math.ceil((double) buttons.size() / 9);
+
+		ChestTemplate template = ChestTemplate.builder(rows)
+				.rectangle(0, 0, rows, 9, placeholder)
 				.build();
 
 		LinkedPage page = PaginationHelper.createPagesFromPlaceholders(template, buttons, null);
-		page.setTitle("§9Choose a Prefix");
+		page.setTitle(isPrefix ? "§9Choose a Prefix" : "§9Choose a Suffix");
 
 		return page;
 	}
 
-	private ArrayList<Button> getSuffixButtons(ServerPlayerEntity player) {
+	private ArrayList<Button> getPrefixButtons(ServerPlayerEntity player) {
 		Config cfg = SuffixAdvancements.config;
 		Account account = SuffixAdvancements.accounts.getAccount(player.getUuid());
 
@@ -49,7 +52,7 @@ public class SelectScreen {
 				.display(new ItemStack(Items.END_CRYSTAL))
 				.title("§2Remove Prefix")
 				.onClick(e -> {
-					LP.removeSuffix(e.getPlayer().getUuid());
+					LP.removePrefix(e.getPlayer().getUuid());
 
 					UIManager.closeUI(e.getPlayer());
 				})
@@ -98,6 +101,41 @@ public class SelectScreen {
 				"Play within the first two weeks of the server opening.", player.getUuid()).getButton());
 		buttons.add(getPerfectionist(account.isPerfectionist(), player));
 
+		// Adds extra prefixes
+		for (String prefix : SuffixAdvancements.extras.getCustomPrefixes().keySet()) {
+			if (LuckPermsUtils.hasPermission(player, prefix)) {
+				buttons.add(new ExtraPrefixItem(prefix, SuffixAdvancements.extras.getPrefix(prefix),
+						player.getUuid()).getButton());
+			}
+		}
+
+		return buttons;
+	}
+
+	private ArrayList<Button> getSuffixButtons(ServerPlayerEntity player) {
+		ArrayList<Button> buttons = new ArrayList<>();
+
+		Collection<String> lore = new ArrayList<>();
+		lore.add("§aRemove your active Suffix.");
+		buttons.add(GooeyButton.builder()
+				.display(new ItemStack(Items.END_CRYSTAL))
+				.title("§2Remove Suffix")
+				.onClick(e -> {
+					LP.removeSuffix(e.getPlayer().getUuid());
+
+					UIManager.closeUI(e.getPlayer());
+				})
+				.lore(lore)
+				.build());
+
+		// Adds extra prefixes
+		for (String prefix : SuffixAdvancements.extras.getCustomSuffixes().keySet()) {
+			if (LuckPermsUtils.hasPermission(player, prefix)) {
+				buttons.add(new ExtraSuffixItem(prefix, SuffixAdvancements.extras.getSuffix(prefix),
+						player.getUuid()).getButton());
+			}
+		}
+
 		return buttons;
 	}
 
@@ -117,7 +155,7 @@ public class SelectScreen {
 
 		if (isPerfection) {
 			button.onClick(e -> {
-				LP.changeSuffix(SuffixAdvancements.nodes.getPerfection(),
+				LP.changePrefix(SuffixAdvancements.nodes.getPerfection(),
 						e.getPlayer().getUuid());
 
 				e.getPlayer().sendMessage(Text.literal("§2Changed Prefix to " +

@@ -52,7 +52,7 @@ public class PrefixItem {
 					.display(Utils.parseItemId(config.getDisplayItem()))
 					.title(config.getSuffix())
 					.onClick(e -> {
-						LP.changeSuffix(SuffixAdvancements.nodes.getNode(config),
+						LP.changePrefix(SuffixAdvancements.nodes.getNode(config),
 								e.getPlayer().getUuid());
 
 						e.getPlayer().sendMessage(Text.literal("§2Changed Prefix to " + config.getSuffix()));

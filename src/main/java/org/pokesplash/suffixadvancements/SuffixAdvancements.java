@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import org.pokesplash.suffixadvancements.account.AccountProvider;
 import org.pokesplash.suffixadvancements.command.CommandHandler;
 import org.pokesplash.suffixadvancements.config.Config;
+import org.pokesplash.suffixadvancements.config.Extras;
 import org.pokesplash.suffixadvancements.config.NodeProvider;
 import org.pokesplash.suffixadvancements.events.AdvancementEvent.*;
 import org.pokesplash.suffixadvancements.events.JoinEvent;
@@ -19,6 +20,7 @@ public class SuffixAdvancements implements ModInitializer {
 	public static final Config config = new Config();
 	public static final AccountProvider accounts = new AccountProvider();
 	public static final NodeProvider nodes = new NodeProvider();
+	public static final Extras extras = new Extras();
 
 	/**
 	 * Runs the mod initializer.
@@ -51,6 +53,7 @@ public class SuffixAdvancements implements ModInitializer {
 
 	public static void load() {
 		config.init();
+		extras.init();
 		accounts.init();
 		nodes.init();
 	}

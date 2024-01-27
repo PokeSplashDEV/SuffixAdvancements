@@ -8,6 +8,7 @@ import net.minecraft.server.command.ServerCommandSource;
 public abstract class CommandHandler {
 	public static void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher) {
 		new BaseCommand().register(dispatcher);
+		new SuffixCommand().register(dispatcher);
 	}
 
 	public static void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher,
