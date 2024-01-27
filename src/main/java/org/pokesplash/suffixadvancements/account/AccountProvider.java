@@ -36,8 +36,10 @@ public class AccountProvider {
 		ArrayList<Account> accountList = new ArrayList<>(accounts.values());
 
 		for (Account ac : accountList) {
-			if (ac.getUsername().equalsIgnoreCase(username)) {
-				return ac;
+			if (ac.getUsername() != null) {
+				if (ac.getUsername().equalsIgnoreCase(username)) {
+					return ac;
+				}
 			}
 		}
 		return null;
