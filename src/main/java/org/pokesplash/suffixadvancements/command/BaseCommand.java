@@ -33,7 +33,8 @@ public class BaseCommand {
 		registeredCommand.addChild(new AddCommand().build());
 		registeredCommand.addChild(new TogglePrimordialCommand().build());
 		registeredCommand.addChild(new CheckCommand().build());
-
+		registeredCommand.addChild(new RemovePrefixCommand().build());
+		registeredCommand.addChild(new RemoveChampion().build());
 	}
 
 	public int run(CommandContext<ServerCommandSource> context) {
